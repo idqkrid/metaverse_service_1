@@ -1,0 +1,157 @@
+.body {
+}
+
+.leftBody {
+  flex: 2;
+  /* background: rgb(60, 255, 0); */
+}
+
+.leftBodyContent0 {
+  margin-left: 10px;
+  margin-top: 30px;
+  width: 100%;
+  color:#837f7a;
+}
+
+.leftBodyContent1 {
+  margin-left: 10px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.leftBodyContent1 a {
+  text-decoration: none;
+}
+
+.centerBody {
+  flex: 8;
+  /* background: rgb(200, 200, 200); */
+}
+
+.centerTitleBody {
+  margin: auto;
+  width: 500px;
+  border: 1px solid #000;
+  background: rgb(243 243 243);
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 15px 22px;
+  letter-spacing: -.4px;
+}
+
+.centerContent1Body {
+  margin-top: 50px;
+  margin-left: 40px;
+}
+
+.centerContent2Body {
+  border: 1px solid;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: #efefef;
+}
+
+.centerContent4Body a,
+.centerContent3Body a,
+.centerContent2Body a{
+  text-decoration: none;
+}
+
+.rightBody {
+  flex: 2;
+  /* background: rgb(98, 13, 255); */
+}
+
+.customerImage {
+  width: 100%;
+}
+
+.centerContent3Body {
+  display: flex;
+  margin: auto;
+}
+
+.centerContent3BodyContent1 {
+  margin-top: 20px;
+  margin-left: 40px;
+  height: 500px;
+  /* background: #837f7a; */
+  border: 1px solid;
+  flex: 1;
+}
+
+.centerContent3BodyContent2 {
+  margin-top: 20px;
+  height: 500px;
+  /* background: #837f7a; */
+  border: 1px solid;
+  flex: 1;
+}
+
+
+.centerContent3BodyContent1Text1 {
+  height: 350px;
+  background: rgb(246, 137, 137);
+  white-space: pre-line;
+  overflow-x: scroll;
+}
+
+.centerContent3BodyContent1Text2 {
+  height: 350px;
+  background: rgb(246, 137, 137);
+  white-space: pre-line;
+  overflow-x: scroll;
+}
+
+.centerContent3BodyContent1Button1 {
+  margin-top: 10px;
+  height: 60px;
+  background: rgb(246, 137, 137);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.centerContent3BodyContent1Button1 a {
+  text-decoration: none;
+  color: #000;
+}
+
+.centerContent3BodyContent1Button2 {
+  margin-top: 10px;
+  height: 60px;
+  background: rgb(246, 137, 137);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.centerContent3BodyContent1Button2 a {
+  text-decoration: none;
+  color: #000;
+}
+
+.modelDetail {
+  padding: 10px;
+}
+
+.modelDetail a {
+  cursor: pointer;
+}
+
+.divL {
+  display: block;
+}

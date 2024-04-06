@@ -1,0 +1,61 @@
+.header {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.landingFQA1 {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 20px;
+  width: 600px;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(42,39,65,.1);
+}
+
+.landingFQA1 div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6758ff;
+  background: #e9e8ff;
+  border-radius: 40px;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.FAQTitle {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.FAQContext {
+  margin-top: 15px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 145px;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  border: 2px solid whitesmoke;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #e0ddff;
+  color: #6758ff;
+  margin-top: 24px;
+  margin-bottom: 10px;
+}

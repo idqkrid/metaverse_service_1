@@ -1,0 +1,63 @@
+.header {
+  flex-flow: column;
+  display: flex;
+  width: 1280px;
+  margin: 60px auto;
+  /* background: red; */
+  height: 938px;
+}
+
+.title {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.passwordLabel,
+.nickNameLabel {
+  display: flex;
+  flex-flow: column;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.nicknameGroup {
+  display: flex;
+}
+
+.passwordOldChange,
+.passwordChange,
+.passwordCheckChange,
+.nickNameChange {
+  width: 430px;
+  margin-top: 10px;
+  display: flex;
+  padding-left: 12px;
+  height: 38px;
+  font-size: 100%;
+}
+
+.nickNameChageButton {
+  margin-bottom: 10px;
+  background: #6758ff;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  border: 0;
+  outline: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 13px;
+}
+
+.passwordButton {
+  background: #6758ff;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  outline: none;
+  border: 0;
+  width: 55px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

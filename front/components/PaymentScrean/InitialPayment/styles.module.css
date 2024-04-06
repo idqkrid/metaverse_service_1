@@ -1,0 +1,88 @@
+.initialDevTitle {
+  display: flex;
+  height: 800px;
+}
+
+.initialDev1 {
+  flex: 2;
+  background: red;
+}
+
+.initialDev2 {
+  flex: 8;
+  background: rgb(69, 23, 235);
+}
+
+.initialDevSamilContent .initialDevSamilTitle {
+  flex: 1; /* 중첩된 요소들이 동일한 높이를 가질 수 있도록 설정합니다. */
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 23px;
+  margin-top: 30px;
+}
+
+.content {
+  display: flex;
+  margin-top:10px;
+  justify-content: center;
+}
+
+.contentTitle {
+  margin-right: 10px;
+}
+
+.initialDev3 {
+  flex: 2;
+  background: red;
+}
+
+.selectMenu,
+.selectBtn {
+  width: 170px;
+  height: 30px;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 8px;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.options {
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.option {
+  display: flex;
+  height: 55px;
+  cursor: pointer;
+  padding: 0 16px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.option:hover {
+  background: #F2F2F2;
+}
+
+.optionText {
+  font-size: 18px;
+  color: #333;
+}
+
+.selectText {
+  padding: 10px;
+}

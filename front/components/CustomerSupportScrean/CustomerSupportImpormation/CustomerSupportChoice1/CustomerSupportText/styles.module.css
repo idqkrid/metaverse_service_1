@@ -1,0 +1,18 @@
+.content {
+  display: flex;
+  margin-top: 10px;
+  width: 800px;
+  cursor: pointer;
+}
+
+.contentImage {
+  flex: 1;
+}
+
+.contentTitle {
+  flex: 8;
+}
+
+.contentDay {
+  flex: 3;
+}

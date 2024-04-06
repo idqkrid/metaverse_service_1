@@ -1,0 +1,141 @@
+.hero {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+}
+
+.formBox {
+  width: 380px;
+  height: 480px;
+  position: relative;
+  margin: 6% auto;
+  background: #fff;
+  padding: 5px;
+  overflow: hidden;
+  border: 1px solid;
+}
+
+.titleBackground img{
+  height: 300px;
+  width: 100%;
+}
+
+.buttonBox {
+  text-align: center;
+  width: 220px;
+  margin: 35px auto;
+  position: relative;
+  box-shadow: 0 0 20px 9px #ff61241f;
+  border-radius: 30px;
+}
+
+.toggleBtn {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+
+.socialIcons {
+  margin: 30px auto;
+  text-align: center;
+}
+
+.socialIcons img {
+  width: 30px;
+  margin: 0 12px;
+  box-shadow: 0 0 20px 0 #7f7f7f3d;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.inputGroup {
+  left: 50px;
+  top: 180px;
+  position: absolute;
+  width: 280px;
+  transition: .5s;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #999;
+  outline: none;
+  background: transparent;
+}
+
+.submitBtn {
+  width: 40%;
+  margin-bottom: 10px;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: 10px 0px 10px 90px;
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+}
+
+.submitBtnRegister {
+  width: 100;
+  margin-bottom: 10px;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: 10px 0px 10px 90px;
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+}
+
+.check-box {
+  margin: 30px 10px 30px 0;
+}
+
+.registerLink {
+  text-decoration: none;
+    color: #000;
+}
+
+.modal {
+  z-index: 1;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+/* Modal content */
+.modalContent {
+  width: 300px; /* 너비 조정 */
+  height: 300px; /* 높이 조정 */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+  position: relative;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

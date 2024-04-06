@@ -1,0 +1,33 @@
+.title1 {
+  display: flex;
+  margin: 70px auto;;
+  width: 1484px;
+  height: 150px;
+  /* background: red; */
+  flex-flow: column;
+  z-index: 10;
+}
+
+.title1Content3 {
+  color: rgb(172, 172, 172);
+}
+
+.title1Content4 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+.content1 {
+  display: flex;
+  margin: 70px auto;;
+  width: 1484px;
+  /* background: red; */
+  z-index: 10;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4개의 열로 구성 */
+  gap: 20px; /* 열 사이의 간격 설정 */
+}

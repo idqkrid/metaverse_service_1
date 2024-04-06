@@ -1,0 +1,134 @@
+.header {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.body {
+  margin: auto;
+  max-width: 1140px;
+}
+
+.bodyOne {
+  display: flex;
+  gap: 20px;
+  max-width: 1140px;
+  margin: 70px 0;
+}
+
+.bodyContent1 {
+  flex: 3;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+
+.title {
+  margin-top: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #6758ff;
+  font-weight: 800;
+  font-size: 30px;
+  background-color: #e9e8ff;
+  border-radius: 27px;
+  text-align: left;
+}
+
+.bodyContent1 h2 {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.bodyContent1 p {
+  color: #8c9097;
+  font-weight: 600;
+}
+
+.bodyContent2 div {
+  gap: 16px;
+  padding: 50px;
+  white-space: pre-line;
+}
+
+.bodyContent2 div h3 {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.bodyContent2 div p {
+  font-size: 18px;
+}
+
+.bodyContent2 {
+  flex: 9;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(42,39,65,.1);
+}
+
+.bodyContent2 img {
+  width: 100%;
+}
+
+.bodyTwo {
+  display: flex;
+  gap: 20px;
+  max-width: 1140px;
+  margin: 70px 0;
+}
+
+.bodyContent3 {
+  flex: 7;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(42,39,65,.1);
+}
+
+.bodyContent4 {
+  flex: 5;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(42,39,65,.1);
+}
+
+.bodyContent3 div,
+.bodyContent4 div {
+  gap: 16px;
+  padding: 50px;
+  white-space: pre-line;
+}
+
+.bodyContent3 img,
+.bodyContent4 img {
+  width: 100%;
+}
+
+.bodyContent3 div h3,
+.bodyContent4 div h3 {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.bodyContent3 div p,
+.bodyContent4 div p {
+  font-size: 18px;
+}

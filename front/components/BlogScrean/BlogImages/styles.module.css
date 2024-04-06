@@ -1,0 +1,24 @@
+.header {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.img {
+  display: flex;
+  margin: 10px auto;
+  width: 500px;
+  height: 400px;
+}
+
+.flex_row {
+  display: flex;
+  flex-wrap: wrap; /* 줄 바꿈을 자동으로 수행 */
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #000;
+}
+
+.thumbnail {
+  padding-left: 20px;
+  padding-bottom: 20px; /* 이미지 아래 여백 추가 */
+}

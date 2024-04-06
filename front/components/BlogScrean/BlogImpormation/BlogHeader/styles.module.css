@@ -1,0 +1,48 @@
+.title {
+  display: flex;
+  margin: 70px auto;;
+  width: 1484px;
+  height: 70px;
+  /* background: red; */
+  z-index: 10;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logoDesign {
+  width: 90px;
+  height: 40px;
+  /* background: green; */
+  border-radius: 5px;
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.logo > a {
+  color: white;
+  text-decoration: none;
+}
+
+.titleNav {
+  display: flex;
+  justify-content: flex-start;
+  line-height: 40px;
+  width:calc(1280px - 400px);
+  list-style: none;
+  /* background: blue; */
+}
+
+.titleNav > li {
+  margin-right: 40px;
+}
+
+.titleNav > li > a {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+}

@@ -1,0 +1,126 @@
+.title {
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  width: 1580px;
+  height: 70px;
+  z-index: 10;
+}
+
+.logoDesign {
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 12px;
+  margin-left: 10px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.logo > a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.navOne {
+  display: flex;
+  justify-content: flex-start;
+  line-height: 18px;
+  list-style: none;
+  margin-top: 20px;
+  /* background: blue; */
+}
+
+
+.navOne > li {
+  margin-left: 25px;
+}
+
+.navOne > li > a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.navSearch {
+  margin-left: 20px;
+  margin-top: 19px;
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modalTitle {
+  display: flex;
+  margin: auto;
+  width: 560px;
+}
+
+.modalSendButton {
+  margin-right: 10px;
+  border: 1px solid;
+  font-size: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.modalTitleContent1 {
+  flex: 11;
+}
+
+.modalTitleContent1Input {
+  display: flex;
+  margin-right: 10px;
+}
+
+.modalTitleContent1Input svg {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.modalTitleContent1 input {
+  width: 430px;
+  height: 28px;
+}
+
+.modalTitleContent2 {
+  flex: 1;
+  border: 1px solid #000;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modalContent {
+  margin-top: 10px;
+  overflow: auto;
+}
+
+.modelDetail a {
+  text-decoration: none;
+}
+
+.modalSearchTitle {
+  margin-bottom: 10px;
+}

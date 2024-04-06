@@ -1,0 +1,92 @@
+.container {
+  background: #fff;
+  padding: 20px;
+  font-family: monospace;
+  box-shadow: 0 0 5px #000;
+}
+
+.head {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.text {
+  margin: 10px 0;
+  font-family: sans-serif;
+  font-size: 0.9em;
+}
+
+.commentbox {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.content {
+  width: 100%;
+}
+
+.user {
+  border: none;
+  outline: none;
+  margin: 5px 0;
+  color: #80808080;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.commentinputInput {
+  border: none;
+  padding: 10px;
+  padding-left: 0;
+  outline: none;
+  border-bottom: 2px solid blue;
+  margin-bottom: 10px;
+  width: 95%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #80808080;
+}
+
+.button {
+  padding: 5px 10px;
+  background: lightgray;
+  color: #808080;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.date {
+  color: #000;
+  font-size: 0.8em;
+}
+
+.parents {
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+.commentButton {
+  display: flex;
+}
+
+
+.commentButtonU {
+  border: 1px solid #000;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.commentButtonD {
+  border: 1px solid #000;
+  padding: 10px;
+  cursor: pointer;
+}

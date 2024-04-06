@@ -1,0 +1,38 @@
+.header {
+  width: 100%;
+  margin-bottom: 10px;
+  background: #edf0fa;
+}
+
+.title > h2 {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.title > p {
+  display: flex;
+  justify-content: center;
+  color: #8c9097;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 145px;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  border: 2px solid whitesmoke;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #6758ff;
+  color: #fff;
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.header img {
+  width: 100%;
+}

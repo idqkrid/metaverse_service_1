@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  margin-bottom: 10px;
+  background: #edf0fa;
+}
+
+.footer {
+  display: flex;
+  background: #1f1f1f;
+  padding: 30px;
+}
+
+.footer > div:first-child {
+  flex: 3;
+  text-align: center;
+  color: #fff;
+}
+
+.footer > div:last-child {
+  flex: 9;
+  color: #fff;
+  /* background: blue; */
+}

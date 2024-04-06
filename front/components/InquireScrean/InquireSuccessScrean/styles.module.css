@@ -1,0 +1,39 @@
+.hero {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+}
+
+.formBox {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 6% auto;
+  background: #fff;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.titleBackground {
+  height: 400px;
+  width: 100%;
+}
+
+.buttonBox {
+  text-align: center;
+  width: 1200px;
+  margin: 35px auto;
+  position: relative;
+  box-shadow: 0 0 20px 9px #ff61241f;
+  border-radius: 30px;
+}
+
+.titleH2 {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}

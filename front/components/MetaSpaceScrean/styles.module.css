@@ -1,0 +1,92 @@
+.space_BackGroundColor {
+  background-color: rgb(255, 138, 138);
+}
+
+.head {
+  height: 38px;
+  background: #350d36;
+  color: #ffffff;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  padding: 5px;
+  text-align: center;
+}
+
+.rightMenu {
+  float: right;
+}
+
+.leftMenu {
+  float: left;
+}
+
+.gravatarRightImg {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 5px;
+  right: 16px;
+}
+
+.gravatarLeftImg {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 5px;
+}
+
+.webRtc_Modal {
+  display: flex;
+  padding: 20px;
+  height: 850px;
+}
+
+.webRtc_Modal > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.webRtc_Modal #profile-name {
+  font-weight: bold;
+  display: inline-flex;
+}
+
+.webRtc_Modal #profile-active {
+  font-size: 13px;
+  display: inline-flex;
+}
+
+.chatting_Modal {
+  display: flex;
+  height: 500px;
+}
+
+.chatting_Modal > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.chatting_Modal #profile-name {
+  font-weight: bold;
+  display: inline-flex;
+}
+
+.chatting_Modal #profile-active {
+  font-size: 13px;
+  display: inline-flex;
+}
+
+.chattingTitle {
+  width: 300;
+  height: 20px;
+  margin-top: 10px;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 10px;
+  background-color: #d7d7d7;
+}
+
+.chats {
+  flex: 1;
+}

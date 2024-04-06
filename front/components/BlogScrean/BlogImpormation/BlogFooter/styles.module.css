@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  margin: auto;
+  width: 1484px;
+  height: 451px;
+  background: red;
+  z-index: 10;
+}
+

@@ -1,0 +1,76 @@
+.card {
+  width: 350px;
+  height: 425px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.cover {
+  height: 255px; /* 조정한 크기에 맞게 설정 */
+  overflow: hidden;
+}
+
+.cover img {
+  width: 100%; /* 이미지가 cover 안에 꽉 차도록 */
+  height: 100%;
+}
+
+.meta {
+  height: 150px;
+  padding: 10px;
+}
+
+.userInfo {
+  margin-left: 10px;
+  height: 100px;
+}
+
+.title {
+  font-weight: bold;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1; /* 보여질 줄 수 설정 */
+  -webkit-box-orient: vertical;
+  line-height: 1.2em;
+  max-height: 3.6em;
+}
+
+.description {
+  margin-top: 5px;
+  margin-top: 37px;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 보여질 줄 수 설정 */
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* 한 줄의 높이를 설정하여 여러 줄에 대한 ellipsis 효과를 얻을 수 있도록 함 */
+  max-height: 3.6em; /* 보여질 줄 수에 따라 계산된 값으로 설정 */
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #eee;
+  border-radius: 50%;
+  font-size: 20px;
+  text-align: center; /* 텍스트를 가운데 정렬 */
+  line-height: 40px; /* 수직 가운데 정렬 */
+}
+
+.nickName {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.avatar,
+.nickName {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+

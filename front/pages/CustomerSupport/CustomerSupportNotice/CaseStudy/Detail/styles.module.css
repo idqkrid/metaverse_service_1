@@ -1,0 +1,156 @@
+.header {
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  margin: 70px auto;;
+  width: 1484px;
+  /* background: red; */
+  z-index: 10;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logoDesign {
+  width: 90px;
+  height: 40px;
+  /* background: green; */
+  border-radius: 5px;
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.logo > a {
+  color: white;
+  text-decoration: none;
+}
+
+.titleNav {
+  display: flex;
+  justify-content: flex-start;
+  line-height: 40px;
+  width:calc(1280px - 300px);
+  list-style: none;
+  /* background: blue; */
+}
+
+.titleNav > li {
+  margin-right: 40px;
+}
+
+.titleNav > li > a {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer {
+  display: flex;
+  margin: auto;
+  width: 1484px;
+  height: 451px;
+  /* background: red; */
+  z-index: 10;
+}
+
+
+/* content */
+
+.title {
+}
+
+.content2 {
+  display: flex;
+  margin: 70px auto;;
+  width: 1484px;
+  flex-flow: column;
+  /* background: rgb(255, 0, 0); */
+  z-index: 10;
+}
+
+.content2Head {
+  display: flex;
+  width: 1484px;
+  height: 47px;
+  /* background: rgb(28, 13, 238); */
+}
+
+.content2HeadContext1 {
+  flex: 1;
+  height: 47px;
+  /* background: rgb(219, 230, 16); */
+}
+
+.content2HeadContext1 h2 {
+  justify-content: flex-start;
+  margin: auto;
+  font-weight: bold;
+}
+
+.detailButton {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.editButton {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.moreDetail {
+  justify-content: flex-end;
+  margin: auto 10px;
+  padding: 10px;
+  font-weight: bold;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  color:rgb(97, 97, 97);
+  cursor: pointer;
+}
+
+.content2Body {
+  display: flex;
+  flex-flow: column;
+  width: 1484px;
+  /* background: rgb(105, 255, 143); */
+}
+
+.imageSpace {
+  margin: 0 auto;
+  width: 740px;
+  /* background: red; */
+}
+
+.contextSpace {
+  padding: 10px;
+  border: 1px solid;
+  flex-flow: column;
+  height: 180px;
+  /* background: rgb(57, 2, 255); */
+}
+
+.commentSpace {
+  margin: 0 auto;
+  width: 745px;
+  flex-flow: column;
+  background: rgb(57, 2, 255);
+}
+
+/* */
+
