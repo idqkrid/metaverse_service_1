@@ -30,52 +30,51 @@ import {
 const CaseStudy = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { singlePost, removePostLoading  } = useSelector((state) => state.post);
-  const { id } = router.query;
-  const userId = useSelector((state) => state.user);
+  // const { singlePost, removePostLoading  } = useSelector((state) => state.post);
+  // const { id } = router.query;
+  // const userId = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_POST_REQUEST,
-      data: context.params.id,
-    });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_POST_REQUEST,
+  //     data: context.params.id,
+  //   });
+  // }, [dispatch]);
 
-  // 수정
-  const onEditPost = useCallback((e) => {
-    e.preventDefault();
-    router.replace(`/Blog/CaseStudy/Edit/${id}`)
-  });
+  // // 수정
+  // const onEditPost = useCallback((e) => {
+  //   e.preventDefault();
+  //   router.replace(`/Blog/CaseStudy/Edit/${id}`)
+  // });
 
-  // 삭제
-  const deleteButton = useCallback((e) => {
-    e.preventDefault();
-    console.log('삭제하기')
-    dispatch({
-      type: REMOVE_POST_REQUEST,
-      data: id,
-    });
-  })
+  // // 삭제
+  // const deleteButton = useCallback((e) => {
+  //   e.preventDefault();
+  //   console.log('삭제하기')
+  //   dispatch({
+  //     type: REMOVE_POST_REQUEST,
+  //     data: id,
+  //   });
+  // })
 
   // 목록보기
   const onDetailPost = useCallback((e) => {
     e.preventDefault();
-    router.replace(`/Blog/MoreDetail`)
-  })
+    router.replace(`/Blog/MoreDetail`);
+  });
 
   useEffect(() => {
     if (removePostLoading) {
-      router.replace(`/Blog/MoreDetail`)
+      router.replace(`/Blog/MoreDetail`);
     } else {
-
     }
-  })
+  });
 
   return (
     <div className={styles.header}>
@@ -113,7 +112,7 @@ const CaseStudy = () => {
       </div> */}
       <FooterMain />
     </div>
-  )
+  );
 }
 
 // export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
