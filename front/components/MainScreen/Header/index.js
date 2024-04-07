@@ -4,9 +4,7 @@ import Link from "next/link";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { LOG_OUT_REQUEST } from "../../../reducers/user";
-
-import { LOAD_MY_INFO_REQUEST } from "../reducers/user";
+import { LOG_OUT_REQUEST, LOAD_MY_INFO_REQUEST } from "../../../reducers/user";
 
 const HeadMain = () => {
   const dispatch = useDispatch();
