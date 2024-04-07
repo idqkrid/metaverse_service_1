@@ -8,11 +8,13 @@ import { LOG_OUT_REQUEST } from "../../../reducers/user";
 
 const HeadMain = () => {
   const dispatch = useDispatch();
-  const { logOutLoading, logInDone } = useSelector((state) => state.user);
-  const me = useSelector((state) => state.user.me?.id);
+  const { me, logOutLoading, logInDone } = useSelector((state) => state.user);
+  const userId = useSelector((state) => state.user.me?.id);
 
   useEffect(() => {
+    console.log("Head 입니다.");
     console.log(me);
+    console.log(userId);
   });
 
   const onLogout = useCallback(() => {
