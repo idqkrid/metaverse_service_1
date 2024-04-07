@@ -17,6 +17,12 @@ const HeadMain = () => {
     console.log(userId);
   });
 
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, [dispatch]);
+
   const onLogout = useCallback(() => {
     console.log("로그아웃 합니다.");
     dispatch({
