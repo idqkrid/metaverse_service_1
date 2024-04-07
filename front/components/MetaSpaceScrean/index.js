@@ -3,8 +3,7 @@ import styles from '../MetaSpaceScrean/styles.module.css';
 import gravatar from 'gravatar';
 import MenuRight from '../MetaSpaceScrean/MenuRight';
 import MenuLeft from '../MetaSpaceScrean/MenuLeft';
-import MetaChannel from '../MetaSpaceScrean/MetaChannel';
-import WebRtc from '../MetaSpaceScrean/WebRtc'
+import MetaChannel from "../MetaSpaceScrean/MetaChannel";
 import { useRouter } from 'next/router';
 import { io } from 'socket.io-client'
 import { backUrl } from "../../config/config";
