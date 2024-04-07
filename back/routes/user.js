@@ -9,27 +9,21 @@ const {isLoggedIn, isNotLoggedIn} = require('./middlewares')
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     if (req.user) {
       const fullUserWithoutPassword = await User.findOne({
-        where: {id: req.user.id},
+        where: { id: req.user.id },
         attributes: {
-          exclude: ['password']
+          exclude: ["password"],
         },
-        include: [{
-          model: Post,
-          attributes: ['id'],
-        }, {
-          model: User,
-          as: 'Followings',
-          attributes: ['id'],
-          }, {
-          model: User,
-          as: 'Followers',
-          attributes: ['id'],
-        }]
-      })
+        include: [
+          {
+            model: Post,
+            attributes: ["id"],
+          },
+        ],
+      });
       res.status(200).json(fullUserWithoutPassword);
     } else {
       res.status(200).json(null);
@@ -37,52 +31,49 @@ router.get('/', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 router.get("/users", (req, res, next) => {
-  console.log('789줄')
-  console.log(req.user)
-  console.log(req.body)
+  console.log("789줄");
+  console.log(req.user);
+  console.log(req.body);
 
   return res.json(req.user || false);
 });
 
 // 로그인
-router.post('/login', isNotLoggedIn, (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err) { // 서버쪽 에러가 있는 경우
+router.post("/login", isNotLoggedIn, (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      // 서버쪽 에러가 있는 경우
       console.error(err);
       return next(err);
     }
-    if (info) { // 클라이언트 에러
+    if (info) {
+      // 클라이언트 에러
       return res.status(401).send(info.reason);
     }
     // 성공하면 유저의 정보
     return req.login(user, async (loginErr) => {
-      if (loginErr) { // 패스포트 로그인 했을때 오류가 났을 경우
+      if (loginErr) {
+        // 패스포트 로그인 했을때 오류가 났을 경우
         console.error(loginErr);
         return next(loginErr);
       }
       const fullUserWithoutPassword = await User.findOne({
-        where: {id: user.id},
+        where: { id: user.id },
         attributes: {
-          exclude: ['password']
+          exclude: ["password"],
         },
-        include: [{
-          model: Post,
-          attributes: ['id'],
-        }, {
-          model: User,
-          as: 'Followings',
-          attributes: ['id'],
-          }, {
-          model: User,
-            as: 'Followers',
-            attributes: ['id'],
-        }]
-      })
+        include: [
+          {
+            model: Post,
+            attributes: ["id"],
+          },
+        ],
+      });
       return res.status(200).json(fullUserWithoutPassword); // 성공하면 프론트에게 넘겨줌
-    })
+    });
   })(req, res, next);
 });
 
