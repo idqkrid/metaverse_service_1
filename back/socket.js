@@ -5,9 +5,10 @@ module.exports = (server, app) => {
   const io = SocketIO(server, {
     path: "/socket.io", // 프론트엔드와 일치해야 합니다.
     cors: {
-      origin: "http://localhost:3060",
-      credentials: true
-    }
+      // origin: "http://localhost:3060",
+      origin: "http://52.78.27.78",
+      credentials: true,
+    },
   });
 
   app.set("io", io);

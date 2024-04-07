@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(
   cors({
-    origin: ["http://localhost:3060", "zepmetaverse.com"],
+    origin: ["http://localhost:3060", "zepmetaverse.com", "http://52.78.27.78"],
     credentials: true, // 쿠키를 같이 전달하고 싶으면 true
     webSocket: true,
   })
