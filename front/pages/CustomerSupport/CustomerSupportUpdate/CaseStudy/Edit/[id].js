@@ -31,6 +31,18 @@ const CaseStudy = () => {
   const [contents, setContents] = useState(updatesPosts[0]?.content);
   const [title, setTitle] = useState(updatesPosts[0]?.title);
 
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_UPDATES_REQUEST,
+      data: context.params.id,
+    });
+  }, [dispatch]);
 
   const handleChange = useCallback((e) => {
     setContents(e.target.value); // textarea의 값이 변경될 때마다 contents state 업데이트

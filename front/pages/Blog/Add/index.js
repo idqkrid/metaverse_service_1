@@ -38,6 +38,12 @@ const CaseStudy = () => {
   const [contents, setContents] = useState("");
   const [text, setText] = useState("");
 
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, [dispatch]);
+
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
   }, [imageInput.current]);

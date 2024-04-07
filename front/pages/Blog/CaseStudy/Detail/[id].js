@@ -34,6 +34,19 @@ const CaseStudy = () => {
   const { id } = router.query;
   const userId = useSelector((state) => state.user);
 
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_POST_REQUEST,
+      data: context.params.id,
+    });
+  }, [dispatch]);
+
   // 수정
   const onEditPost = useCallback((e) => {
     e.preventDefault();
