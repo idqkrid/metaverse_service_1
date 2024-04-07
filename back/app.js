@@ -40,11 +40,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3060",
-      "http://zepmetaverse.com",
-      "http://52.78.27.78",
-    ],
+    origin: ["http://localhost:3060", "http://zepmetaverse.com"],
     credentials: true, // 쿠키를 같이 전달하고 싶으면 true
     webSocket: true,
   })
@@ -60,6 +56,11 @@ app.use(
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      domain: process.env.NODE_ENV === "production" && ".zepmetaverse.com",
+    },
   })
 );
 app.use(passport.initialize());
