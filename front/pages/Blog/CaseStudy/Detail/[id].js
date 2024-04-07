@@ -64,12 +64,6 @@ const CaseStudy = () => {
     }
   })
 
-  /* 
-  닉네임 : {singlePost.User.nickname}
-  내용 : {singlePost.content}
-  이미지 : {singlePost?.Images[0] && <img src={`http://localhost:3065/${singlePost.Images[0].src}`}></img>}
-  */
-
   return (
     <div className={styles.header}>
       <BlogImpormationHeader />

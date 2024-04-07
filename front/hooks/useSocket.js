@@ -1,6 +1,7 @@
 import {io, Socket} from 'socket.io-client'
 import React, { useCallback } from 'react'
 import axios from 'axios';
+import { backUrl } from "../config/config";
 
 // 만든이유
 /*
@@ -15,10 +16,9 @@ Socket.io는 웹소켓 특성상 근데 이렇게 하나의 컴포넌트에 종�
 */
 const sockets = {}; // workspace는 고정값이면 sleact 이렇게 넣어줄수 있지만 고정값이 아니기때문에 key: string 으로 넣어줌 ex) sleact, text, hello
 const useSocket = (workspace) => {
-
   const disconnect = useCallback(() => {
     if (workspace && sockets[workspace]) {
-      console.log('소켓 연결 끊음');
+      console.log("소켓 연결 끊음");
       sockets[workspace].disconnect();
       delete sockets[workspace]; // 연결 끊을때는 객체 지워버리기
     }
@@ -37,19 +37,19 @@ const useSocket = (workspace) => {
   워크스페이스간에 이동하면 소켓을 끊어준다.
   */
 
-  if (!sockets[workspace]) { // 기존에 소켓연결이 없었다면 
-    sockets[workspace] = io('http://localhost:3065', {
-    transports: ['websocket'],
+  if (!sockets[workspace]) {
+    // 기존에 소켓연결이 없었다면
+    sockets[workspace] = io(backUrl, {
+      transports: ["websocket"],
     });
 
-    sockets[workspace].on('connect_error', (err) => {
+    sockets[workspace].on("connect_error", (err) => {
       console.error(err);
       console.log(`connect_error due to ${err.message}`);
     }); // 소켓 에러 났을경우
   }
 
-
-  return [sockets[workspace], disconnect] // 기존 소켓 연결하기 (새롭게 소켓 연결 시도 x)
-}
+  return [sockets[workspace], disconnect]; // 기존 소켓 연결하기 (새롭게 소켓 연결 시도 x)
+};
 
 export default useSocket;

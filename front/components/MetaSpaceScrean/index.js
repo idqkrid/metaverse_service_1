@@ -7,14 +7,15 @@ import MetaChannel from '../MetaSpaceScrean/MetaChannel';
 import WebRtc from '../MetaSpaceScrean/WebRtc'
 import { useRouter } from 'next/router';
 import { io } from 'socket.io-client'
+import { backUrl } from "../config/config";
 
 let game;
 let player;
 var othersprites = [];
-var others = []; 
+var others = [];
 
-const socket = io('http://localhost:3065', {
-  transports: ['websocket'],
+const socket = io(backUrl, {
+  transports: ["websocket"],
 });
 
 const Meta = () => {

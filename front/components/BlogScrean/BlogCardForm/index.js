@@ -8,26 +8,37 @@ import { useSelector, useDispatch } from 'react-redux';
 /* Router */
 import Router from 'next/router';
 
+import { backUrl } from "../config/config";
+
 const BlogCardForm = ({ post }) => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
   const id = me && me.id;
 
-  const blogCardFormClick = useCallback((e) => {
-    e.preventDefault();
-    console.log('클릭합니다!');
-    console.log(post?.id)
+  const blogCardFormClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log("클릭합니다!");
+      console.log(post?.id);
 
-    if (post) {
-      Router.push(`/Blog/CaseStudy/Detail/${post.id}`);
-    }
-  }, [post])
+      if (post) {
+        Router.push(`/Blog/CaseStudy/Detail/${post.id}`);
+      }
+    },
+    [post]
+  );
 
   return (
     <div className={styles.card} onClick={blogCardFormClick}>
       <div className={styles.cover}>
-        {post.Images[0] && <img role="presentation" src={`http://localhost:3065/${post.Images[0]?.src}`} alt={post.Images[0]?.src} />}
-      </div> 
+        {post.Images[0] && (
+          <img
+            role="presentation"
+            src={`${backUrl}/${post.Images[0]?.src}`}
+            alt={post.Images[0]?.src}
+          />
+        )}
+      </div>
       <div className={styles.meta}>
         <div className={styles.userInfo}>
           <div className={styles.title}>{post.title}</div>
@@ -39,7 +50,7 @@ const BlogCardForm = ({ post }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default BlogCardForm;

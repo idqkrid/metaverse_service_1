@@ -21,9 +21,8 @@ const SpaceCardForm = ({ post }) => {
   return (
     <div className={styles.card} onClick={blogCardFormClick}>
       <div className={styles.cover}>
-        {/* {post.Images[0] && <img role="presentation" src={`http://localhost:3065/${post.Images[0]?.src}`} alt={post.Images[0]?.src} />} */}
-        <img src='/images/metaMap.PNG' alt='' />
-      </div> 
+        <img src="/images/metaMap.PNG" alt="" />
+      </div>
       <div className={styles.meta}>
         <div className={styles.userInfo}>
           <div className={styles.title}>{post.title}</div>
@@ -34,7 +33,7 @@ const SpaceCardForm = ({ post }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default SpaceCardForm;

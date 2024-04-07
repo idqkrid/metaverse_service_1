@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
+import { backUrl } from "../config/config";
 
 /* react-slick */
 import Slider from "react-slick";
@@ -14,33 +15,24 @@ const BlogImages = ({ images }) => {
     console.log(index);
     const slider = images[index];
     setSliderData(slider);
-  }
+  };
 
   return (
     <>
-      <img className={styles.img} src={`http://localhost:3065/${sliderData.src}`} />
+      <img className={styles.img} src={`${backUrl}/${sliderData.src}`} />
       <div className={styles.flex_row}>
-        {
-          images.map((data, index) =>
-            <div className={styles.thumbnail}>
-              <img key={index} src={`http://localhost:3065/${data.src}`}
-              onClick={() => handleClick(index)} height="70" width="100" />
-            </div>
-          )
-        }
-      </div>
-      {/* <Slider className={styles.carousel} {...settings}>
-        {
-          images.map((image, index) => (
-          <div key={index} className={styles.wrap}>
+        {images.map((data, index) => (
+          <div className={styles.thumbnail}>
             <img
-              role="presentation"
-              src={`http://localhost:3065/${image.src}`}
-              alt={image.src}
+              key={index}
+              src={`${baseUrl}/${data.src}`}
+              onClick={() => handleClick(index)}
+              height="70"
+              width="100"
             />
           </div>
         ))}
-      </Slider> */}
+      </div>
     </>
   );
 };

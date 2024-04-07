@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import styles from '../MetaChannel/styles.module.css';
 import { io } from 'socket.io-client'
+import { backUrl } from "../config/config";
 
 /* redux */
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
-
-const socket = io('http://localhost:3065', {
-    transports: ['websocket'],
+const socket = io(backUrl, {
+  transports: ["websocket"],
 });
 
 const MetaChannel = ({username, room}) => {

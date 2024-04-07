@@ -18,22 +18,25 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import BlogImpormationHeader from '../../../components/BlogScrean/BlogImpormation/BlogHeader';
 import FooterMain from '../../../components/MainScreen/FooterMain';
+import { backUrl } from "../config/config";
 
 import {
   UPLOAD_IMAGES_REQUEST,
   REMOVE_IMAGE,
   ADD_POST_REQUEST,
-} from '../../../reducers/post';
+} from "../../../reducers/post";
 
 const CaseStudy = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { imagePaths, addPostLoading, addPostDone } = useSelector((state) => state.post);
+  const { imagePaths, addPostLoading, addPostDone } = useSelector(
+    (state) => state.post
+  );
   const me = useSelector((state) => state.user.me?.id);
   const imageInput = useRef();
 
-  const [contents, setContents] = useState('');
-  const [text, setText] = useState('');
+  const [contents, setContents] = useState("");
+  const [text, setText] = useState("");
 
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
@@ -52,13 +55,13 @@ const CaseStudy = () => {
   // 미리보기 이미지 등록
   const onChangeImages = useCallback((e) => {
     e.preventDefault();
-    console.log('images', e.target.files);
+    console.log("images", e.target.files);
     const imageFormData = new FormData();
     [].forEach.call(e.target.files, (f) => {
-      imageFormData.append('image', f);
+      imageFormData.append("image", f);
     });
 
-    console.log('이미지')
+    console.log("이미지");
     console.log(imageFormData);
 
     dispatch({
@@ -68,48 +71,53 @@ const CaseStudy = () => {
   }, []);
 
   // 게시글 추가
-  const onAddPost = useCallback((e) => {
-    e.preventDefault();
-    if (!contents || !contents.trim()) {
-      return alert('게시글을 작성하세요.');
-    }
-    if (!text || !text.trim()) {
-      return alert('게시글을 작성하세요.');
-    }
-    console.log('타이틀 내용');
-    console.log(text);
-    const formData = new FormData();
-    imagePaths.forEach((p) => {
-      formData.append('image', p);
-    });
-    formData.append('content', contents);
-    formData.append('text', text);
+  const onAddPost = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (!contents || !contents.trim()) {
+        return alert("게시글을 작성하세요.");
+      }
+      if (!text || !text.trim()) {
+        return alert("게시글을 작성하세요.");
+      }
+      console.log("타이틀 내용");
+      console.log(text);
+      const formData = new FormData();
+      imagePaths.forEach((p) => {
+        formData.append("image", p);
+      });
+      formData.append("content", contents);
+      formData.append("text", text);
 
-    for (const pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
+      for (const pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
 
-    return dispatch({
-      type: ADD_POST_REQUEST,
-      data: formData,
-    });
-  }, [contents,text, imagePaths]);
+      return dispatch({
+        type: ADD_POST_REQUEST,
+        data: formData,
+      });
+    },
+    [contents, text, imagePaths]
+  );
 
   // 미리보기 이미지 취소
-  const onRemoveImage = useCallback((index) => () => {
-    dispatch({
-      type: REMOVE_IMAGE,
-      data: index,
-    });
-  }, []);
+  const onRemoveImage = useCallback(
+    (index) => () => {
+      dispatch({
+        type: REMOVE_IMAGE,
+        data: index,
+      });
+    },
+    []
+  );
 
   useEffect(() => {
     if (addPostDone) {
-      router.replace(`/Blog/MoreDetail`)
+      router.replace(`/Blog/MoreDetail`);
     } else {
-
     }
-  })
+  });
 
   return (
     <div className={styles.header}>
@@ -121,39 +129,71 @@ const CaseStudy = () => {
           </div>
         </div>
         <div className={styles.board_wrap}>
-            <div className={styles.board_write_wrap}>
-                <div className={styles.board_write}>
-                    <div className={styles.title}>
-                      <input value={text} onChange={onChangeTitle} placeholder='제목을 입력해주세요'></input>
-                    </div>
-                    <div className={styles.cont}>
-                      <textarea placeholder="내용 입력해주세요" value={contents} onChange={onChangeText}></textarea>
-                    </div>
+          <div className={styles.board_write_wrap}>
+            <div className={styles.board_write}>
+              <div className={styles.title}>
+                <input
+                  value={text}
+                  onChange={onChangeTitle}
+                  placeholder="제목을 입력해주세요"
+                ></input>
+              </div>
+              <div className={styles.cont}>
+                <textarea
+                  placeholder="내용 입력해주세요"
+                  value={contents}
+                  onChange={onChangeText}
+                ></textarea>
+              </div>
+              <div>
+                <input
+                  type="file"
+                  name="image"
+                  multiple
+                  hidden
+                  ref={imageInput}
+                  onChange={onChangeImages}
+                />
+                <button
+                  className={styles.buttonWrap}
+                  onClick={onClickImageUpload}
+                >
+                  이미지 업로드
+                </button>
+              </div>
+              <div>
+                {imagePaths.map((v, i) => (
+                  <div key={v} style={{ display: "inline-block" }}>
+                    <img
+                      src={`${backUrl}/${v}`}
+                      style={{ width: "200px" }}
+                      alt={v}
+                    />
                     <div>
-                      <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
-                      <button className={styles.buttonWrap} onClick={onClickImageUpload}>이미지 업로드</button>
+                      <button onClick={onRemoveImage(i)}>제거</button>
                     </div>
-                    <div>
-                      {imagePaths.map((v, i) => (
-                        <div key={v} style={{ display: 'inline-block' }}>
-                          <img src={`http://localhost:3065/${v}`} style={{ width: '200px' }} alt={v} />
-                          <div>
-                            <button onClick={onRemoveImage(i)}>제거</button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                </div>
-                <div className={styles.bt_wrap}>
-                    <button className={styles.buttonWrap} type="primary" htmlType="submit" loading={addPostLoading} onClick={onAddPost}>등록</button>
-                </div>
+                  </div>
+                ))}
+              </div>
             </div>
+            <div className={styles.bt_wrap}>
+              <button
+                className={styles.buttonWrap}
+                type="primary"
+                htmlType="submit"
+                loading={addPostLoading}
+                onClick={onAddPost}
+              >
+                등록
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <FooterMain />
     </div>
-  )
-}
+  );
+};
 
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
   const cookie = context.req ? context.req.headers.cookie : '';
