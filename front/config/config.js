@@ -1,1 +1,1 @@
-export const backUrl = "http://43.200.2.185";
+export const backUrl = "http://api.zepmetaverse.com";
