@@ -2,39 +2,42 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
 
-const { Post, Image, Comment, User } = require('../models');
-const {isLoggedIn} = require('./middlewares')
+const { Post, Image, Comment, User } = require("../models");
+const { isLoggedIn } = require("./middlewares");
 
 const router = express.Router();
 
 try {
-  fs.accessSync('uploads')
+  fs.accessSync("uploads");
 } catch (error) {
-  console.log('uploads 폴더가 없으므로 생성합니다.')
-  fs.mkdirSync('uploads')
+  console.log("uploads 폴더가 없으므로 생성합니다.");
+  fs.mkdirSync("uploads");
 }
 
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: "ap-northeast-2",
+});
 const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, 'uploads');
-    },
-    filename(req, file, done) { // 제로초.png
-      const ext = path.extname(file.originalname); // 확장자 추출(.png)
-      const basename = path.basename(file.originalname, ext); // 제로초
-      done(null, basename + '_' + new Date().getTime() + ext); // 제로초15184712891.png
+  storage: multer({
+    s3: new AWS.S3(),
+    bucket: "zepmetaverse",
+    key(req, file, cb) {
+      cb(null, `original/${Data.now()} ${path.basename(file.originalname)}`);
     },
   }),
   limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
 });
 
-
 // 게시글 추가
-router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
-    console.log('게시글 전송!')
-    console.log(req.body.text)
+    console.log("게시글 전송!");
+    console.log(req.body.text);
 
     const post = await Post.create({
       title: req.body.text,
@@ -42,101 +45,127 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
       UserId: req.user.id,
     });
     if (req.body.image) {
-      if (Array.isArray(req.body.image)) { // 이미지를 여러 개 올리면 image: [제로초.png, 부기초.png]
-        const images = await Promise.all(req.body.image.map((image) => Image.create({ src: image })));
+      if (Array.isArray(req.body.image)) {
+        // 이미지를 여러 개 올리면 image: [제로초.png, 부기초.png]
+        const images = await Promise.all(
+          req.body.image.map((image) => Image.create({ src: image }))
+        );
         await post.addImages(images);
-      } else { // 이미지를 하나만 올리면 image: 제로초.png
+      } else {
+        // 이미지를 하나만 올리면 image: 제로초.png
         const image = await Image.create({ src: req.body.image });
         await post.addImages(image);
       }
     }
     const fullPost = await Post.findOne({
       where: { id: post.id },
-      include: [{
-        model: Image,
-      }, {
-        model: Comment,
-        include: [{
+      include: [
+        {
+          model: Image,
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["id", "nickname"],
+            },
+          ],
+        },
+        {
           model: User,
-          attributes: ['id', 'nickname'],
-        }]
-      }, {
-        model: User,
-        attributes: ['id', 'nickname'],
-      }]
-    })
+          attributes: ["id", "nickname"],
+        },
+      ],
+    });
 
     res.status(201).json(fullPost);
   } catch (error) {
     console.log(error);
     next(error);
   }
-})
+});
 
 // 이미지 추가 array , single , none
-router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => { // POST /post/images
+router.post("/images", isLoggedIn, upload.array("image"), (req, res, next) => {
+  // POST /post/images
   console.log(req.files);
-  res.json(req.files.map((v) => v.filename));
+  res.json(req.files.map((v) => v.location));
 });
 
 // 댓글 추가
-router.post('/:postId/comment', isLoggedIn, async (req, res, next) => {
+router.post("/:postId/comment", isLoggedIn, async (req, res, next) => {
   try {
     const post = await Post.findOne({
-      where: {id : req.params.postId}
-    })
+      where: { id: req.params.postId },
+    });
 
     if (!post) {
-      return res.status(403).send('존재하지 않는 게시글입니다.')
+      return res.status(403).send("존재하지 않는 게시글입니다.");
     }
 
     const comment = await Comment.create({
       content: req.body.content,
       PostId: parseInt(req.params.postId, 10),
       UserId: req.user.id,
-    })
+    });
     const fullComment = await Comment.findOne({
       where: { id: comment.id },
-      include: [{
-        model: User,
-        attributes: ['id', 'nickname'],
-      }],
-    })
+      include: [
+        {
+          model: User,
+          attributes: ["id", "nickname"],
+        },
+      ],
+    });
     res.status(201).json(fullComment);
   } catch (error) {
     console.log(error);
     next(error);
   }
-})
+});
 
 // 게시글 수정
-router.patch('/:postId', isLoggedIn, async (req, res, next) => { // PATCH /post/10
+router.patch("/:postId", isLoggedIn, async (req, res, next) => {
+  // PATCH /post/10
   try {
-    console.log('게시글 수정!')
-    console.log(req.body)
-    console.log(req.body.title)
-    console.log(req.body.content)
-    console.log(req.body.image)
+    console.log("게시글 수정!");
+    console.log(req.body);
+    console.log(req.body.title);
+    console.log(req.body.content);
+    console.log(req.body.image);
 
-    const post = await Post.update({
-      title: req.body.title,
-      content: req.body.content,
-    }, {
-      where: {
-        id: req.params.postId,
-        UserId: req.user.id,
+    const post = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
       },
-    });
+      {
+        where: {
+          id: req.params.postId,
+          UserId: req.user.id,
+        },
+      }
+    );
 
     if (req.body.image) {
-      if (Array.isArray(req.body.image)) { // 이미지를 여러 개 올리면 image: [제로초.png, 부기초.png]
-        const images = await Promise.all(req.body.image.map((image) => Image.create({ src: image, PostId: req.params.postId })));
-      } else { // 이미지를 하나만 올리면 image: 제로초.png
-        const image = await Image.create({ src: req.body.image , PostId: req.params.postId });
+      if (Array.isArray(req.body.image)) {
+        // 이미지를 여러 개 올리면 image: [제로초.png, 부기초.png]
+        const images = await Promise.all(
+          req.body.image.map((image) =>
+            Image.create({ src: image, PostId: req.params.postId })
+          )
+        );
+      } else {
+        // 이미지를 하나만 올리면 image: 제로초.png
+        const image = await Image.create({
+          src: req.body.image,
+          PostId: req.params.postId,
+        });
       }
     }
 
-    res.status(200).json({ PostId: parseInt(req.params.postId, 10)});
+    res.status(200).json({ PostId: parseInt(req.params.postId, 10) });
   } catch (error) {
     console.error(error);
     next(error);
@@ -144,8 +173,8 @@ router.patch('/:postId', isLoggedIn, async (req, res, next) => { // PATCH /post/
 });
 
 // 이미지 삭제
-router.delete('/image/:imageId', isLoggedIn, async (req, res, next) => {
-  console.log('이미지 삭제');
+router.delete("/image/:imageId", isLoggedIn, async (req, res, next) => {
+  console.log("이미지 삭제");
   console.log(req.params);
   console.log(req.params.data);
   console.log(req.params.imageId);
@@ -154,8 +183,8 @@ router.delete('/image/:imageId', isLoggedIn, async (req, res, next) => {
     await Image.destroy({
       where: {
         id: parseInt(req.params.imageId, 10),
-      }
-    })
+      },
+    });
     res.status(200).json({ ImageId: parseInt(req.params.imageId, 10) });
   } catch (error) {
     console.error(error);
@@ -164,53 +193,67 @@ router.delete('/image/:imageId', isLoggedIn, async (req, res, next) => {
 });
 
 // 댓글 수정
-router.patch('/:postId/comment/:commentId', isLoggedIn, async (req, res, next) => { // PATCH /post/10
-  try {
-    console.log('게시글 수정!')
-    console.log(req.params)
-    console.log(req.params.postId)
-    console.log(req.params.commentId)
-    console.log(req.body.content)
+router.patch(
+  "/:postId/comment/:commentId",
+  isLoggedIn,
+  async (req, res, next) => {
+    // PATCH /post/10
+    try {
+      console.log("게시글 수정!");
+      console.log(req.params);
+      console.log(req.params.postId);
+      console.log(req.params.commentId);
+      console.log(req.body.content);
 
-    const comment = await Comment.update({
-      content: req.body.content,
-    }, {
-      where: {
-        id: req.params.commentId,
-        PostId: req.params.postId,
-      },
-    });
+      const comment = await Comment.update(
+        {
+          content: req.body.content,
+        },
+        {
+          where: {
+            id: req.params.commentId,
+            PostId: req.params.postId,
+          },
+        }
+      );
 
-    res.status(200).json({ CommentId: parseInt(req.params.commentId, 10)});
-  } catch (error) {
-    console.error(error);
-    next(error);
+      res.status(200).json({ CommentId: parseInt(req.params.commentId, 10) });
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
   }
-});
+);
 
 // 댓글 삭제
-router.delete('/:postId/comment/:commentId', isLoggedIn, async (req, res, next) => { // DELETE /post/10
-  console.log('서버 댓글 삭제')
-  console.log(req.params)
-  console.log(req.params.postId)
-  console.log(req.params.commentId)
-  
-  try {
-    await Comment.destroy({
-      where: {
-        id: req.params.commentId,
-        PostId: req.params.postId,
-      },
-    });
-    res.status(200).json({ CommentId: parseInt(req.params.commentId, 10) });
-  } catch (error) {
-    console.error(error);
-    next(error);
+router.delete(
+  "/:postId/comment/:commentId",
+  isLoggedIn,
+  async (req, res, next) => {
+    // DELETE /post/10
+    console.log("서버 댓글 삭제");
+    console.log(req.params);
+    console.log(req.params.postId);
+    console.log(req.params.commentId);
+
+    try {
+      await Comment.destroy({
+        where: {
+          id: req.params.commentId,
+          PostId: req.params.postId,
+        },
+      });
+      res.status(200).json({ CommentId: parseInt(req.params.commentId, 10) });
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
   }
-});
+);
 
 // 게시글 삭제
-router.delete('/:postId', isLoggedIn, async (req, res, next) => { // DELETE /post/10
+router.delete("/:postId", isLoggedIn, async (req, res, next) => {
+  // DELETE /post/10
   try {
     await Post.destroy({
       where: {
@@ -226,42 +269,36 @@ router.delete('/:postId', isLoggedIn, async (req, res, next) => { // DELETE /pos
 });
 
 // 게시글 한개 가져오기
-router.get('/:postId', async (req, res, next) => { // GET /post/1
+router.get("/:postId", async (req, res, next) => {
+  // GET /post/1
   try {
     const post = await Post.findOne({
       where: { id: req.params.postId },
     });
     if (!post) {
-      return res.status(404).send('존재하지 않는 게시글입니다.');
+      return res.status(404).send("존재하지 않는 게시글입니다.");
     }
     const fullPost = await Post.findOne({
       where: { id: post.id },
-      include: [{
-        model: Post,
-        as: 'Retweet',
-        include: [{
+      include: [
+        {
           model: User,
-          attributes: ['id', 'nickname'],
-        }, {
+          attributes: ["id", "nickname"],
+        },
+        {
           model: Image,
-        }]
-      }, {
-        model: User,
-        attributes: ['id', 'nickname'],
-      }, {
-        model: User,
-        as: 'Likers',
-        attributes: ['id', 'nickname'],
-      }, {
-        model: Image,
-      }, {
-        model: Comment,
-        include: [{
-          model: User,
-          attributes: ['id', 'nickname'],
-        }],
-      }],
-    })
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["id", "nickname"],
+            },
+          ],
+        },
+      ],
+    });
     res.status(200).json(fullPost);
   } catch (error) {
     console.error(error);

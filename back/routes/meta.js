@@ -8,7 +8,6 @@ const {isLoggedIn} = require('./middlewares')
 
 const router = express.Router();
 
-// 댓글 추가
 router.post('/', isLoggedIn, async (req, res, next) => {
   try {
     const meta = await Meta.create({
