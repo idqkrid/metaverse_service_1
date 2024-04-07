@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
-import { backUrl } from "../config/config";
+import { backUrl } from "../../../config/config";
 
 /* react-slick */
 import Slider from "react-slick";

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 /* Router */
 import Router from 'next/router';
 
-import { backUrl } from "../config/config";
+import { backUrl } from "../../../config/config";
 
 const BlogCardForm = ({ post }) => {
   const dispatch = useDispatch();

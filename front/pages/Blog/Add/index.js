@@ -18,7 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import BlogImpormationHeader from '../../../components/BlogScrean/BlogImpormation/BlogHeader';
 import FooterMain from '../../../components/MainScreen/FooterMain';
-import { backUrl } from "../config/config";
+import { backUrl } from "../../../config/config";
 
 import {
   UPLOAD_IMAGES_REQUEST,

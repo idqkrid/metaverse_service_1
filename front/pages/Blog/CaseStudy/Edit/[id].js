@@ -22,7 +22,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import BlogImpormationHeader from '../../../../components/BlogScrean/BlogImpormation/BlogHeader';
 import FooterMain from '../../../../components/MainScreen/FooterMain';
 import BlogImages from '../../../../components/BlogScrean/BlogImages';
-import { backUrl } from "../config/config";
+import { backUrl } from "../../../../config/config";
 
 import {
   UPDATE_POST_REQUEST,

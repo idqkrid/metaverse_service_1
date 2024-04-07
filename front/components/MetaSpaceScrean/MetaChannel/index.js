@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import styles from '../MetaChannel/styles.module.css';
 import { io } from 'socket.io-client'
-import { backUrl } from "../config/config";
+import { backUrl } from "../../../config/config";
 
 /* redux */
 import { useSelector, useDispatch } from "react-redux";

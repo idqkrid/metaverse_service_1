@@ -7,7 +7,7 @@ import MetaChannel from '../MetaSpaceScrean/MetaChannel';
 import WebRtc from '../MetaSpaceScrean/WebRtc'
 import { useRouter } from 'next/router';
 import { io } from 'socket.io-client'
-import { backUrl } from "../config/config";
+import { backUrl } from "../../config/config";
 
 let game;
 let player;
