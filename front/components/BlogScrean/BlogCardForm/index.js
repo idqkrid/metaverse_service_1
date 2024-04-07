@@ -31,7 +31,7 @@ const BlogCardForm = ({ post }) => {
         {post.Images[0] && (
           <img
             role="presentation"
-            src={`${backUrl}/${post.Images[0]?.src}`}
+            src={`${post.Images[0]?.src}`}
             alt={post.Images[0]?.src}
           />
         )}

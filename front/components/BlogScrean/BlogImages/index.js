@@ -19,13 +19,13 @@ const BlogImages = ({ images }) => {
 
   return (
     <>
-      <img className={styles.img} src={`${backUrl}/${sliderData.src}`} />
+      <img className={styles.img} src={`${sliderData.src}`} />
       <div className={styles.flex_row}>
         {images.map((data, index) => (
           <div className={styles.thumbnail}>
             <img
               key={index}
-              src={`${baseUrl}/${data.src}`}
+              src={`${data.src}`}
               onClick={() => handleClick(index)}
               height="70"
               width="100"
