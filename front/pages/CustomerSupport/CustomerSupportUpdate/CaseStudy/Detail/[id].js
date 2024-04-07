@@ -56,11 +56,6 @@ const CaseStudy = () => {
     }
   })
 
-  useEffect(() => {
-    console.log(updatesPosts);
-    console.log(singlePost);
-  })
-
   return (
     <div className={styles.header}>
       <CustomerSupportHead />

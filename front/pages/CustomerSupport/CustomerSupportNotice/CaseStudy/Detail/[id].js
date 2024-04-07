@@ -35,7 +35,6 @@ const CaseStudy = () => {
   // 삭제
   const deleteButton = useCallback((e) => {
     e.preventDefault();
-    console.log('삭제하기')
     dispatch({
       type: REMOVE_NOTICE_REQUEST,
       data: id,
@@ -56,10 +55,6 @@ const CaseStudy = () => {
     }
   })
 
-  useEffect(() => {
-    console.log(noticesPosts);
-    console.log(singlePost);
-  })
 
   return (
     <div className={styles.header}>

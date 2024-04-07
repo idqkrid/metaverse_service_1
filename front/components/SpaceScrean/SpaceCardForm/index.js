@@ -1,22 +1,20 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import styles from '../SpaceCardForm/styles.module.css';
-import Link from 'next/link';
+import styles from "../SpaceCardForm/styles.module.css";
 
 /* Router */
-import Router from 'next/router';
+import Router from "next/router";
 
 const SpaceCardForm = ({ post }) => {
+  const blogCardFormClick = useCallback(
+    (e) => {
+      e.preventDefault();
 
-  const blogCardFormClick = useCallback((e) => {
-    e.preventDefault();
-    console.log('클릭합니다!');
-
-    
-
-    if (post) {
-      Router.push(`/Meta/${post.title}`);
-    }
-  }, [post])
+      if (post) {
+        Router.push(`/Meta/${post.title}`);
+      }
+    },
+    [post]
+  );
 
   return (
     <div className={styles.card} onClick={blogCardFormClick}>
@@ -34,6 +32,6 @@ const SpaceCardForm = ({ post }) => {
       </div>
     </div>
   );
-}
+};
 
 export default SpaceCardForm;

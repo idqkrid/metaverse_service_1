@@ -24,14 +24,6 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   const { signUpLoading, me, signUpDone, signUpError } = useSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   if (me && me.id) {
-  //     Router.replace('/')
-  //   } else {
-  //     Router.push('/Member/Signup')
-  //   }
-  // }, [me && me.id])
-
   useEffect(() => {
     if (signUpDone) {
       Router.push('/Member/Login')

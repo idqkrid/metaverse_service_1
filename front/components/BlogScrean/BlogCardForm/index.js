@@ -1,12 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import styles from './styles.module.css';
-import Link from 'next/link';
+import styles from "./styles.module.css";
 
 /* redux */
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 /* Router */
-import Router from 'next/router';
+import Router from "next/router";
 
 import { backUrl } from "../../../config/config";
 
@@ -18,8 +17,6 @@ const BlogCardForm = ({ post }) => {
   const blogCardFormClick = useCallback(
     (e) => {
       e.preventDefault();
-      console.log("클릭합니다!");
-      console.log(post?.id);
 
       if (post) {
         Router.push(`/Blog/CaseStudy/Detail/${post.id}`);

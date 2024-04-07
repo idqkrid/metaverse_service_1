@@ -42,12 +42,7 @@ const CustomerSupportHead = () => {
   const onClickButton = useCallback((e) => {
     e.preventDefault();
 
-    console.log('버튼 클릭!')
-    console.log(querydata)
-
-    if (querydata !== '') {
-      console.log('등장')
-
+    if (querydata !== "") {
       dispatch({
         type: LOAD_SEARCH_DATA_REQUEST,
         querydata,

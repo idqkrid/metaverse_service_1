@@ -50,7 +50,6 @@ const CustomerSupportBody = () => {
 
   const addPostButton = useCallback((e) => {
     e.preventDefault();
-    console.log('공지사항 등록하기')
     router.push('/CustomerSupport/CustomerSupportUpdate/Add');
   })
 

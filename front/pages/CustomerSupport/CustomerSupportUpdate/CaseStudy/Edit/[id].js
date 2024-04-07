@@ -51,11 +51,6 @@ const CaseStudy = () => {
       return alert('게시글 제목을 작성하세요.');
     }
 
-
-    console.log('수정된 내용:', contents);
-    console.log('수정된 내용:', title)
-    console.log('수정된 내용:', id);
-
     const formData = new FormData();
 
     formData.append('content', contents);

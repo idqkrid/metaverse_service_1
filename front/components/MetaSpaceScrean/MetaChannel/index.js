@@ -28,26 +28,23 @@ const MetaChannel = ({username, room}) => {
         room: room,
         author: me.nickname,
         message: currentMessage,
-        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+        time:
+          new Date(Date.now()).getHours() +
+          ":" +
+          new Date(Date.now()).getMinutes(),
       };
 
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
-      // console.log('내가 보내는 데이터')
-      // console.log(messageData)
       setCurrentMessage("");
     }
-  }
+  };
 
   useEffect(() => {
-
     socket.on("receive_message", (data) => {
-      // console.log(data);
-      setMessageList((list) => [...list, data])
-      // console.log('내가 받는 데이터')
-      // console.log(data)
-    })
-  }, [socket])
+      setMessageList((list) => [...list, data]);
+    });
+  }, [socket]);
 
   const scrollRef = useRef();
 
@@ -60,8 +57,6 @@ const MetaChannel = ({username, room}) => {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
   };
-
-  // let user = (username === messageContent.author ? "you" : "other");
 
   return (
     <div className={styles.chat_window}>

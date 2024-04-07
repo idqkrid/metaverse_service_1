@@ -33,18 +33,12 @@ const BlogImpormation = () => {
   const isEqualToMe = mainPosts.every(post => post.User.id === me?.id);
 
   useEffect(() => {
-    console.log('blog 나의 정보는?')
-    console.log(me?.id) 
-  })
-
-  useEffect(() => {
     dispatch({
       type: LOAD_MY_INFO_REQUEST,
     });
-  }, [dispatch])
+  }, [dispatch]);
 
   useEffect(() => {
-    // 블로그 데이터 가져오기
     dispatch({
       type: LOAD_POSTS_REQUEST,
     });
@@ -52,55 +46,63 @@ const BlogImpormation = () => {
 
   const addPostButton = useCallback((e) => {
     e.preventDefault();
-    console.log('게시글 등록하기')
     if (me) {
-      router.push('/Blog/Add');
+      router.push("/Blog/Add");
     } else {
     }
-  })
+  });
 
   const moreDetailButton = useCallback((e) => {
     e.preventDefault();
-    console.log('게시글 더보기')
-    router.push('/Blog/MoreDetail')
+
+    router.push("/Blog/MoreDetail");
   });
 
   return (
     <div className={styles.header}>
-      {/* title */}
       <BlogImpormationHeader />
-      
-      {/* content 1 */}
-
-      {/* content 2 */}
       <div className={styles.content2}>
         <div className={styles.content2Head}>
           <div className={styles.content2HeadContext1}>
             <h2>성공사례</h2>
           </div>
-          
-          {isEqualToMe ? 
+
+          {isEqualToMe ? (
             <>
-              <div className={styles.moreDetail} onClick={moreDetailButton}>더보기</div>
-              <div className={styles.addDetail} onClick={addPostButton}>게시글 등록</div>
+              <div className={styles.moreDetail} onClick={moreDetailButton}>
+                더보기
+              </div>
+              <div className={styles.addDetail} onClick={addPostButton}>
+                게시글 등록
+              </div>
             </>
-            :
+          ) : (
             <>
-              <div className={styles.moreDetail} onClick={moreDetailButton}>더보기</div>
+              <div className={styles.moreDetail} onClick={moreDetailButton}>
+                더보기
+              </div>
             </>
-          }
+          )}
         </div>
         <div className={styles.content2Body}>
-        {mainPosts.map((post, index) => 
-          (index === 0) ?
-            <div className={styles.content2BodyContext1}><BlogCardForm key={post.id} post={post} /></div>
-            : (index === 1)
-              ? <div className={styles.content2BodyContext2}><BlogCardForm key={post.id} post={post} /></div>
-              : (index === 2)
-                ? <div className={styles.content2BodyContext3}><BlogCardForm key={post.id} post={post} /></div>
-                : (index === 3)
-                  ? <div className={styles.content2BodyContext4}><BlogCardForm key={post.id} post={post} /></div>
-                : null,
+          {mainPosts.map((post, index) =>
+            index === 0 ? (
+              <div className={styles.content2BodyContext1}>
+                <BlogCardForm key={post.id} post={post} />
+              </div>
+            ) : index === 1 ? (
+              <div className={styles.content2BodyContext2}>
+                <BlogCardForm key={post.id} post={post} />
+              </div>
+            ) : index === 2 ? (
+              <div className={styles.content2BodyContext3}>
+                <BlogCardForm key={post.id} post={post} />
+              </div>
+            ) : index === 3 ? (
+              <div className={styles.content2BodyContext4}>
+                <BlogCardForm key={post.id} post={post} />
+              </div>
+            ) : null
           )}
         </div>
       </div>
@@ -108,7 +110,7 @@ const BlogImpormation = () => {
       <div className={styles.content4}></div>
       <FooterMain />
     </div>
-  )
+  );
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {

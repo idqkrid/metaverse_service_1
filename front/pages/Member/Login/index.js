@@ -21,10 +21,9 @@ const MemberLogin = () => {
   return (
     <div>
       <LoginForm />
-      {console.log(logInDone)}
-      {logInDone ? null : '로그인 실패'}
+      {logInDone ? null : "로그인 실패"}
     </div>
-  )
+  );
 }
 
 export default MemberLogin;

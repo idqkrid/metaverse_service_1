@@ -70,10 +70,6 @@ const CaseStudy = () => {
       return alert("게시글 제목을 작성하세요.");
     }
 
-    console.log("수정된 내용:", contents);
-    console.log("수정된 내용:", title);
-    console.log("수정된 내용:", id);
-
     const formData = new FormData();
 
     if (imagePaths) {
@@ -122,9 +118,6 @@ const CaseStudy = () => {
       imageFormData.append("image", f);
     });
 
-    console.log("이미지");
-    console.log(imageFormData);
-
     dispatch({
       type: UPLOAD_IMAGES_REQUEST,
       data: imageFormData,
@@ -145,10 +138,6 @@ const CaseStudy = () => {
 
   const onRemoveImage = useCallback(
     (index) => () => {
-      console.log(index);
-      console.log(singlePost?.id);
-      console.log("클릭했어요!");
-
       dispatch({
         type: REMOVE_IMAGE_REQUEST, // 기존 이미지 삭제
         data: index,

@@ -11,13 +11,6 @@ import { LOAD_NOTICES_REQUEST } from '../../../../reducers/post';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 
-// next
-import wrapper from '../../../../store/configureStore'
-import { END } from 'redux-saga';
-
-/* axios */
-import axios from 'axios';
-
 import Link from 'next/link';
 
 import CustomerSupportBodyNoticesData from '../CustomerSupportBody/CustomerSupportBodyNoticesData';

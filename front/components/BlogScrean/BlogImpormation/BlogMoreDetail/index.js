@@ -11,9 +11,6 @@ import { LOAD_MY_INFO_REQUEST } from '../../../../reducers/user';
 import { useSelector, useDispatch } from 'react-redux';
 
 // next
-import wrapper from '../../../../store/configureStore'
-import { END } from 'redux-saga';
-import axios from 'axios';
 
 import BlogCardForm from '../../BlogCardForm'
 
@@ -35,8 +32,6 @@ const BlogMoreDetail = () => {
   }, [dispatch])
 
   useEffect(() => {
-    // 블로그 데이터 가져오기
-    console.log('보내기!!!')
   
     dispatch({
       type: LOAD_POSTS_MORE_REQUEST,
@@ -48,11 +43,6 @@ const BlogMoreDetail = () => {
       if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
         if (hasMorePosts && !loadPostsLoading) {
           const lastId = mainPosts[mainPosts.length - 1]?.id;
-          console.log('들어옴!!')
-          console.log(lastId)
-          console.log(mainPosts.length)
-          console.log(hasMorePosts)
-          console.log(loadPostsLoading)
 
           dispatch({
             type: LOAD_POSTS_MORE_REQUEST,

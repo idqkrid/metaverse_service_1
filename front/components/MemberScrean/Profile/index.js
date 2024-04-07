@@ -57,15 +57,11 @@ const ProfileForm = () => {
   }, [nickname]);
 
   const onChangePasswordSubmit = useCallback(() => {
-    console.log('클릭')
-    console.log(password)
     dispatch({
       type: CHANGE_PASSWORD_REQUEST,
       data: passwordCheck,
     });
-  }, [passwordCheck])
-
-  console.log(me);
+  }, [passwordCheck]);
 
   return (
     <div className={styles.header}>

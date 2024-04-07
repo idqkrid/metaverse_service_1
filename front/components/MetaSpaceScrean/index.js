@@ -24,26 +24,14 @@ const Meta = () => {
 
   const data = router.query;
 
-  // console.log('111')
-  // console.log(data.id);
-
-  const onClickUserProfile = useCallback(() => {
-    setShowUserMenu((prev) => !prev);
-  }, []);
-
   const onClickUserChatting = useCallback(() => {
     setChattingShowUserMenu((prev) => !prev);
-  }, []);
-
-  const onCloseUserProfile = useCallback((e) => {
-    e.stopPropagation();
-    setShowUserMenu(false);
   }, []);
 
   const onCloseUserChatting = useCallback((e) => {
     e.stopPropagation();
     setChattingShowUserMenu(false);
-  }, [])
+  }, []);
 
   useEffect(() => {
     loadGame();
@@ -56,56 +44,50 @@ const Meta = () => {
       height: 600,
       backgroundColor: 0x999999,
       physics: {
-        default: 'arcade',
+        default: "arcade",
         arcade: {
           // debug: true,
           gravity: {
             x: 0,
-            y: 0
-          }
-        }
+            y: 0,
+          },
+        },
       },
       scale: {
         mode: Phaser.Scale.NONE,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        parent: "gmae-content"
+        parent: "gmae-content",
       },
       pixelArt: true,
-      scene: [GameScene]
-    }
+      scene: [GameScene],
+    };
 
-    game = new Phaser.Game(config)
+    game = new Phaser.Game(config);
   };
 
   return (
     <div>
       <div className={styles.space_BackGroundColor} id="gmae-content" />
       <div className={styles.head}>
-        {/* <div className={styles.rightMenu}>
-          <span onClick={onClickUserProfile}>
-            <img className={styles.gravatarRightImg} src={gravatar.url('', { s: '28px', d: 'retro' })} alt='' />
-            {showUserMenu && (  
-              <MenuRight show={showUserMenu} onCloseModal={onCloseUserProfile}>
-                <div className={styles.webRtc_Modal}>
-                  <div>
-                    <WebRtc></WebRtc>
-                  </div>
-                </div>
-              </MenuRight>
-            )}
-          </span>
-        </div> */}
-        <div className={styles.leftMenu}> {/* leftMenu */}
+        <div className={styles.leftMenu}>
+          {" "}
+          {/* leftMenu */}
           <span onClick={onClickUserChatting}>
-            <img className={styles.gravatarLeftImg} src={gravatar.url('', { s: '28px', d: 'retro' })} alt='' />
-            {chattingShowUserMenu && (  
-              <MenuLeft show={chattingShowUserMenu} onCloseModal={onCloseUserChatting}>
+            <img
+              className={styles.gravatarLeftImg}
+              src={gravatar.url("", { s: "28px", d: "retro" })}
+              alt=""
+            />
+            {chattingShowUserMenu && (
+              <MenuLeft
+                show={chattingShowUserMenu}
+                onCloseModal={onCloseUserChatting}
+              >
                 <div className={styles.chatting_Modal}>
                   <div>
                     <div className={styles.chattingTitle}></div>
                     <div className={styles.chats}>
-                      {/* <MetaChannel /> */}
-                      <MetaChannel username='test1' room={data.id}/>
+                      <MetaChannel username="test1" room={data.id} />
                     </div>
                   </div>
                 </div>
@@ -115,7 +97,7 @@ const Meta = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 const speed = 200;

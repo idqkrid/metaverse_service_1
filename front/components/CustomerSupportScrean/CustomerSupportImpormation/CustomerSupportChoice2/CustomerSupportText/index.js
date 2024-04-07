@@ -14,7 +14,6 @@ const CustomerSupportText = ({update}) => {
 
   const detailNoticeButton = useCallback((e) => {
     e.preventDefault();
-    console.log('업데이트 소식 전체보기')
     router.push(`/CustomerSupport/CustomerSupportUpdate/CaseStudy/Detail/${update.id}`);
   })
 

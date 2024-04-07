@@ -51,8 +51,6 @@ const CaseStudy = () => {
       return alert('게시글을 작성하세요.');
     }
 
-    console.log(title);
-    console.log(contents);
     const formData = new FormData();
 
     formData.append('content', contents);

@@ -11,9 +11,8 @@ const Meta = () => {
   
   useEffect(() => {
     const loadPhaser = async () => {
-      if (typeof window !== 'undefined' && !window.Phaser) {
-        // Check if Phaser is not already loaded to avoid duplicate loading
-        const Phaser = await import('phaser');
+      if (typeof window !== "undefined" && !window.Phaser) {
+        const Phaser = await import("phaser");
         window.Phaser = Phaser;
         setPhaserLoaded(true);
       }
